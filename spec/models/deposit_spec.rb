@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Deposit, type: :model do
   describe '.create_deposit' do
-    let(:tradeline) { create(:tradeline) }
+    let!(:tradeline) { create(:tradeline, amount: 2000) }
 
     context 'with valid attributes' do
       it 'creates a new deposit' do
@@ -48,7 +48,7 @@ RSpec.describe Deposit, type: :model do
   end
 
   describe '.find_deposit' do
-    let(:tradeline) { create(:tradeline) }
+    let!(:tradeline) { create(:tradeline) }
     let!(:deposit) { create(:deposit, tradeline: tradeline) }
 
     it 'finds a deposit by id and tradeline_id' do
@@ -70,7 +70,7 @@ RSpec.describe Deposit, type: :model do
   end
 
   describe '.find_deposits_for_tradeline' do
-    let(:tradeline) { create(:tradeline) }
+    let!(:tradeline) { create(:tradeline) }
     let!(:deposits) { create_list(:deposit, 3, tradeline: tradeline) }
 
     it 'returns deposits for a given tradeline_id' do

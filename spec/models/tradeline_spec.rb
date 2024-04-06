@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Deposit, type: :model do
+RSpec.describe Tradeline, type: :model do
   describe '.outstanding_balance' do
-    let(:tradeline) { create(:tradeline, amount: 15000) }
+    let(:tradeline) { build(:tradeline, amount: 15000) }
 
     context 'with valid attributes' do
       it 'creates a new deposit' do
@@ -10,4 +10,5 @@ RSpec.describe Deposit, type: :model do
         expect(tradeline.outstanding_balance).to eq(tradeline.amount - deposit.amount) #14000
       end
     end
+  end
 end

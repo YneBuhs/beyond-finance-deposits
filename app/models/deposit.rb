@@ -1,5 +1,6 @@
 # app/models/deposit.rb
 class Deposit < ApplicationRecord
+    validates_presence_of :amount, :date
     belongs_to :tradeline
   
     class MissingArgumentException < StandardError; end
